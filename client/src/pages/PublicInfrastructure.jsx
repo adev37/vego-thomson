@@ -38,7 +38,7 @@ export default function PublicInfrastructure() {
           </div>
           <div className="service-card">
             <div className="service-card-header">Railway Infrastructure</div>
-            <img src="/images/Public2.jpg" alt="Electric" />
+            <img src="/images/Public8.jpg" alt="Electric" />
           </div>
         </div>
       </div>
