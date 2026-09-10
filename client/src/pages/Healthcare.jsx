@@ -18,27 +18,27 @@ export default function Healthcare() {
         <div className="service-grid">
           <div className="service-card">
             <div className="service-card-header">Biomedical Waste Management Solutions</div>
-            <img src="https://hanumanhealthcare.com/images/Healthcare1.jpg" alt="Road" />
+            <img src="/images/Healthcare1.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Vego & Thomson Nanotech for Disinfection</div>
-            <img src="https://hanumanhealthcare.com/images/Healthcare2.jpg" alt="Hospital" />
+            <img src="/images/Healthcare2.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Turnkey Hospital And Medical College projects</div>
-            <img src="https://hanumanhealthcare.com/images/Healthcare4.jpg" alt="Electric" />
+            <img src="/images/Healthcare4.jpg" alt="Electric" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Disability Rehabilitation</div>
-            <img src="https://hanumanhealthcare.com/images/Healthcare5.jpg" alt="Road" />
+            <img src="/images/Healthcare5.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Medical Teaching Devices</div>
-            <img src="https://hanumanhealthcare.com/images/Healthcare7.jpg" alt="Hospital" />
+            <img src="/images/Healthcare7.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Modular Operations Theatres & Gas Pipelines</div>
-            <img src="https://hanumanhealthcare.com/images/Healthcare8.jpg" alt="Electric" />
+            <img src="/images/Healthcare8.jpg" alt="Electric" />
           </div>
         </div>
       </div>

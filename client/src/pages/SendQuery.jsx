@@ -78,7 +78,7 @@ export default function SendQuery() {
       <div className="query-container">
         {/* Left Side: Image Collage */}
         <div className="query-images">
-          <img src="https://hanumanhealthcare.com/images/about-banner.jpg" alt="About" />
+          <img src="/images/about-banner.jpg" alt="About" />
         </div>
 
         {/* Center: Form */}
@@ -158,7 +158,7 @@ export default function SendQuery() {
 
         {/* Right Side: Envelope Icon */}
         <div className="query-icon">
-          <img src="https://hanumanhealthcare.com/images/enquiry-img.png" alt="About" />
+          <img src="/images/enquiry-img.png" alt="About" />
         </div>
       </div>
 

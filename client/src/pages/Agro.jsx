@@ -18,27 +18,27 @@ export default function Agro() {
         <div className="service-grid">
           <div className="service-card">
             <div className="service-card-header">Logistics</div>
-            <img src="https://hanumanhealthcare.com/images/Agro1.jpg" alt="Road" />
+            <img src="/images/Agro1.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Specification Based Cropping</div>
-            <img src="https://hanumanhealthcare.com/images/Agro2.jpg" alt="Hospital" />
+            <img src="/images/Agro2.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Commodity Risk Offset Instruments</div>
-            <img src="https://hanumanhealthcare.com/images/Agro3.jpg" alt="Electric" />
+            <img src="/images/Agro3.jpg" alt="Electric" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Commodity Derivatives</div>
-            <img src="https://hanumanhealthcare.com/images/Agro4.jpg" alt="Road" />
+            <img src="/images/Agro4.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Long-Term Return Assurance</div>
-            <img src="https://hanumanhealthcare.com/images/Agro5.jpg" alt="Hospital" />
+            <img src="/images/Agro5.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Sourcing Supply</div>
-            <img src="https://hanumanhealthcare.com/images/Agro6.jpg" alt="Electric" />
+            <img src="/images/Agro6.jpg" alt="Electric" />
           </div>
         </div>
       </div>

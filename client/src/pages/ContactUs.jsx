@@ -12,7 +12,7 @@ export default function ContactUs() {
         {/* Left Side: Image Collage */}
         <div className="contact-images">
           <img 
-            src="https://hanumanhealthcare.com/images/about-banner.jpg" 
+            src="/images/about-banner.jpg" 
             alt="Hanuman Healthcare" 
           />
         </div>

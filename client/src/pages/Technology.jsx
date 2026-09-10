@@ -18,27 +18,27 @@ export default function Technology() {
         <div className="service-grid">
           <div className="service-card">
             <div className="service-card-header">CCTV Integrated Solutions</div>
-            <img src="https://hanumanhealthcare.com/images/Technology1.jpg" alt="Road" />
+            <img src="/images/Technology1.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">CMS Room</div>
-            <img src="https://hanumanhealthcare.com/images/Technology2.jpg" alt="Hospital" />
+            <img src="/images/Technology2.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Network Security</div>
-            <img src="https://hanumanhealthcare.com/images/Technology3.jpg" alt="Electric" />
+            <img src="/images/Technology3.jpg" alt="Electric" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Patient Safety Solutions</div>
-            <img src="https://hanumanhealthcare.com/images/Technology4.jpg" alt="Road" />
+            <img src="/images/Technology4.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Electronic Medical Records</div>
-            <img src="https://hanumanhealthcare.com/images/Technology5.jpg" alt="Hospital" />
+            <img src="/images/Technology5.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Auditing and Reporting Applications</div>
-            <img src="https://hanumanhealthcare.com/images/Technology6.jpg" alt="Electric" />
+            <img src="/images/Technology6.jpg" alt="Electric" />
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function About() {
           <div className="about-img-bottom-grid">
             <div className="about-img-item">
               <img 
-                src="https://hanumanhealthcare.com/images/about-banner.jpg" 
+                src="/images/about-banner.jpg" 
                 alt="Agro" 
               />
             </div>

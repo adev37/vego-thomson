@@ -18,27 +18,27 @@ export default function PublicInfrastructure() {
         <div className="service-grid">
           <div className="service-card">
             <div className="service-card-header">ROAD CONSTRUCTION</div>
-            <img src="https://hanumanhealthcare.com/images/Public1.jpg" alt="Road" />
+            <img src="/images/Public1.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">HOSPITAL & HOTEL CONSTRUCTION</div>
-            <img src="https://hanumanhealthcare.com/images/Public3.jpg" alt="Hospital" />
+            <img src="/images/Public3.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">ELECTRIFICATION INFRASTRUCTURE</div>
-            <img src="https://hanumanhealthcare.com/images/Public4.jpg" alt="Electric" />
+            <img src="/images/Public4.jpg" alt="Electric" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Water Resource Management Infrastructure</div>
-            <img src="https://hanumanhealthcare.com/images/Public5.jpg" alt="Road" />
+            <img src="/images/Public5.jpg" alt="Road" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Green Belt Initiative</div>
-            <img src="https://hanumanhealthcare.com/images/Public6.jpg" alt="Hospital" />
+            <img src="/images/Public6.jpg" alt="Hospital" />
           </div>
           <div className="service-card">
             <div className="service-card-header">Railway Infrastructure</div>
-            <img src="https://hanumanhealthcare.com/images/Public2.jpg" alt="Electric" />
+            <img src="/images/Public2.jpg" alt="Electric" />
           </div>
         </div>
       </div>
