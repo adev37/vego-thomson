@@ -5,7 +5,27 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+
+// ✅ Sirf ek CORS setup — allowed origins ke saath
+const allowedOrigins = [
+  "https://vegothomsonindia.in",
+  "https://www.vegothomsonindia.in",
+  "http://localhost:3000"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Postman / server-to-server requests ke liye origin undefined hota hai
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log("❌ Blocked by CORS:", origin);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 
 // MongoDB Connection
@@ -24,23 +44,21 @@ const querySchema = new mongoose.Schema({
 
 const Query = mongoose.model("Query", querySchema);
 
-// ============================================
 // Nodemailer Transporter - GoDaddy (Titan) SMTP
-// ============================================
 const transporter = nodemailer.createTransport({
-  host: "smtpout.secureserver.net", // GoDaddy ka SMTP server
-  port: 465,                        // SSL port (agar kaam na kare toh 587 try karein)
-  secure: true,                     // true for 465, false for 587
+  host: "smtpout.secureserver.net",
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.EMAIL_USER,   // Aapka full email (contact@vegothomsonindia.in)
-    pass: process.env.EMAIL_PASS,   // Aapka GoDaddy webmail password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
   tls: {
-    rejectUnauthorized: false       // Local testing / kuch hosting ke liye helpful
+    rejectUnauthorized: false
   }
 });
 
-// Verify SMTP connection on startup (optional but useful)
+// Verify SMTP connection
 transporter.verify((error, success) => {
   if (error) {
     console.error("❌ SMTP Connection Error:", error.message);
@@ -49,9 +67,7 @@ transporter.verify((error, success) => {
   }
 });
 
-// ============================================
 // API Route
-// ============================================
 app.post("/api/queries", async (req, res) => {
   try {
     const { name, email, phone, comments } = req.body;
@@ -65,7 +81,7 @@ app.post("/api/queries", async (req, res) => {
     const mailOptions = {
       from: `"Website Enquiry" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
-      replyTo: email, // User ke email par direct reply kar sakenge
+      replyTo: email,
       subject: `New Query from ${name}`,
       html: `
         <h3>New Query Received</h3>
@@ -85,6 +101,11 @@ app.post("/api/queries", async (req, res) => {
     console.error("❌ Error:", err.message);
     res.status(500).json({ error: "Something went wrong. Please try again." });
   }
+});
+
+// Health check route (Render ke liye useful)
+app.get("/", (req, res) => {
+  res.json({ status: "Backend is running ✅" });
 });
 
 // Start Server

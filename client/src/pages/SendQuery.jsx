@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import "./SendQuery.css";
 
 const WEB3FORMS_ACCESS_KEY = "1f793fe3-ad83-47aa-8000-95e5a132de30";
-const BACKEND_URL = "http://localhost:5000/api/queries";
+const BACKEND_URL = `${process.env.REACT_APP_API_URL}/api/queries`;
 const EMAIL_API_KEY = "901d46b59bcc4e1eb0094cc91eb9eb84"; // Step 1 se
 
 export default function SendQuery() {
