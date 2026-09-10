@@ -24,16 +24,34 @@ const querySchema = new mongoose.Schema({
 
 const Query = mongoose.model("Query", querySchema);
 
-// Nodemailer Transporter
+// ============================================
+// Nodemailer Transporter - GoDaddy (Titan) SMTP
+// ============================================
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtpout.secureserver.net", // GoDaddy ka SMTP server
+  port: 465,                        // SSL port (agar kaam na kare toh 587 try karein)
+  secure: true,                     // true for 465, false for 587
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.EMAIL_USER,   // Aapka full email (contact@vegothomsonindia.in)
+    pass: process.env.EMAIL_PASS,   // Aapka GoDaddy webmail password
   },
+  tls: {
+    rejectUnauthorized: false       // Local testing / kuch hosting ke liye helpful
+  }
 });
 
+// Verify SMTP connection on startup (optional but useful)
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ SMTP Connection Error:", error.message);
+  } else {
+    console.log("✅ SMTP Server is ready to send emails");
+  }
+});
+
+// ============================================
 // API Route
+// ============================================
 app.post("/api/queries", async (req, res) => {
   try {
     const { name, email, phone, comments } = req.body;
@@ -41,11 +59,13 @@ app.post("/api/queries", async (req, res) => {
     // 1. Save to MongoDB
     const newQuery = new Query({ name, email, phone, comments });
     await newQuery.save();
+    console.log("📥 Query saved to MongoDB");
 
     // 2. Send Email
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `"Website Enquiry" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_TO,
+      replyTo: email, // User ke email par direct reply kar sakenge
       subject: `New Query from ${name}`,
       html: `
         <h3>New Query Received</h3>
@@ -58,10 +78,11 @@ app.post("/api/queries", async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
+    console.log("📧 Email sent successfully");
 
     res.status(200).json({ message: "Query submitted successfully!" });
   } catch (err) {
-    console.error(err);
+    console.error("❌ Error:", err.message);
     res.status(500).json({ error: "Something went wrong. Please try again." });
   }
 });
