@@ -9,13 +9,13 @@ export default function Splash({ onEnter, isLeaving }) {
       <div className="splash__inner">
         <div className="splash__brand">
           <LogoMark />
-          <h1 className="splash__brand-name">HANUMAN HEALTHCARE</h1>
+          <h1 className="splash__brand-name">VEGO & THOMSON</h1>
         </div>
 
         <div className="splash__divider" />
 
         <p className="splash__intro">
-          <strong>HANUMAN HEALTHCARE</strong> has been founded with the Motto "Excellence
+          <strong>VEGO & THOMSON</strong> has been founded with the Motto "Excellence
           through Innovation" having 4 verticals we endeavour towards building a strong,
           reliable and ethical institution that shall serve humanity in coming decades and
           centuries. As of date we have market presence across the Indian Subcontinent. The
