@@ -35,9 +35,10 @@ export default function ContactUs() {
 
           {/* Google Map Embed */}
           <div className="contact-map">
+            
             <iframe 
             title="Vego & Thomson Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14019.82897822391!2d77.1989076057972!3d28.541004811434085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1dd455555555%3A0x59663cefe65f8535!2sBR%20Biomedical%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1789017377726!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224346.5400466074!2d77.04417434001834!3d28.527252739872903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1789021472439!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}

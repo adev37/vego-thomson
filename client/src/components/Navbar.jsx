@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { LogoMark } from "./Icons";
 import "./Navbar.css";
+import { VTLogo } from "./Icons";
 
 const socials = ["facebook", "twitter", "linkedin", "instagram", "youtube"];
 
@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <NavLink to="/" className="navbar__brand">
-        <LogoMark color="#6d1c39" size={36} />
+        <VTLogo size={40} color="#6d1c39" />
         <span>VEGO & THOMSON</span>
       </NavLink>
 

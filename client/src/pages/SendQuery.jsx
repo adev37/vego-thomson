@@ -87,7 +87,7 @@ export default function SendQuery() {
           <div className="query-underline"></div>
           
           <p className="query-desc">
-            Have a question? Feel free to contact us! Simply fill out this form and hit the Submit button and a <strong>SHREE VEGO & THOMSON GROUP</strong> will contact you.
+            Have a question? Feel free to contact us! Simply fill out this form and hit the Submit button and a <strong>VEGO & THOMSON GROUP</strong> will contact you.
           </p>
 
           <form onSubmit={handleSubmit} className="query-form">

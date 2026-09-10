@@ -1,6 +1,6 @@
 import React from "react";
 import "./Splash.css";
-import { LogoMark, MouseScrollIcon, ChevronUp, categoryIcon } from "./Icons";
+import { VTLogo, MouseScrollIcon, ChevronUp, categoryIcon } from "./Icons";
 import categories from "../data/categories";
 
 export default function Splash({ onEnter, isLeaving }) {
@@ -8,7 +8,7 @@ export default function Splash({ onEnter, isLeaving }) {
     <div className={`splash ${isLeaving ? "splash--leaving" : ""}`}>
       <div className="splash__inner">
         <div className="splash__brand">
-          <LogoMark />
+          <VTLogo size={80} color="#6d1c39" />
           <h1 className="splash__brand-name">VEGO & THOMSON</h1>
         </div>
 

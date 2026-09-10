@@ -21,7 +21,7 @@ export default function Healthcare() {
             <img src="https://hanumanhealthcare.com/images/Healthcare1.jpg" alt="Road" />
           </div>
           <div className="service-card">
-            <div className="service-card-header">Hanuman Healthcare Nanotech for Disinfection</div>
+            <div className="service-card-header">Vego & Thomson Nanotech for Disinfection</div>
             <img src="https://hanumanhealthcare.com/images/Healthcare2.jpg" alt="Hospital" />
           </div>
           <div className="service-card">

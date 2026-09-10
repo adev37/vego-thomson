@@ -103,3 +103,40 @@ export const categoryIcon = (key, size) => {
       return null;
   }
 };
+
+// Icons.jsx (existing file ke andar add karein)
+
+export const VTLogo = ({ size = 60, color = "#6d1c39" }) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Triangle - bada kiya taaki andar space mile */}
+      <path
+        d="M50 8 L94 90 L6 90 Z"
+        stroke={color}
+        strokeWidth="4"
+        strokeLinejoin="round"
+        fill="none"
+      />
+
+      {/* VT Text - chota aur center mein */}
+      <text
+        x="50"
+        y="74"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontWeight="900"
+        fontSize="26"
+        fill={color}
+        letterSpacing="1"
+      >
+        VT
+      </text>
+    </svg>
+  );
+};
