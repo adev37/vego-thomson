@@ -1,0 +1,125 @@
+/* ContactUs.css */
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.contact-container {
+  display: flex;
+  flex: 1;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  gap: 50px;
+}
+
+/* --- Left Side: Image --- */
+.contact-images {
+  flex: 1;
+  max-width: 320px;
+  height: 520px; /* Fixed height for image */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.contact-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Right Side: Content --- */
+.contact-content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-title {
+  font-size: 1.8rem;
+  color: #6d1c39;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact-underline {
+  width: 50px;
+  height: 2px;
+  background-color: #6d1c39;
+  margin-bottom: 25px;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-bottom: 25px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.info-label {
+  font-weight: 700;
+  color: #111;
+  width: 100px; /* Align labels */
+}
+
+.info-value {
+  color: #333;
+}
+
+/* Google Map */
+.contact-map {
+  width: 100%;
+  height: 350px; /* Map ki height */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.contact-map iframe {
+  display: block;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .contact-images {
+    max-width: 100%;
+    width: 100%;
+    height: 250px;
+  }
+
+  .contact-content {
+    width: 100%;
+  }
+
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .info-label {
+    width: auto;
+    margin-bottom: 4px;
+  }
+
+  .contact-map {
+    height: 250px;
+  }
+}

@@ -1,0 +1,137 @@
+/* About.css */
+
+/* Main Wrapper - Poori screen fit karega, scroll nahi aayega */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+/* Content Area - Navbar ke niche bacha hua space lega */
+.about-container {
+  display: flex;
+  flex: 1;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  gap: 50px;
+  overflow: hidden;
+  align-items: center; /* Image aur Text vertically center rahenge */
+}
+
+/* --- Left Side: Single Image --- */
+.about-images {
+  flex: 1;
+  height: 100%;
+  max-height: 500px; /* Image ki max height */
+  display: flex;
+  align-items: center;
+}
+
+.about-img-bottom-grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.about-img-item {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px; /* Thoda sa rounded corner */
+}
+
+.about-img-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Image stretch nahi hogi, crop hogi */
+  display: block;
+}
+
+/* --- Right Side: Text Content --- */
+.about-content {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100%;
+  overflow-y: auto; /* Agar text zyada ho toh sirf yahan scroll hoga */
+  padding-right: 10px;
+}
+
+/* Custom Scrollbar (Optional - agar text overflow ho) */
+.about-content::-webkit-scrollbar {
+  width: 4px;
+}
+.about-content::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+/* Title */
+.about-title {
+  font-size: 1.8rem;
+  color: #6d1c39; /* Maroon */
+  font-weight: 700;
+  margin-bottom: 5px;
+  flex-shrink: 0;
+}
+
+.about-title-underline {
+  width: 50px;
+  height: 2px;
+  background-color: #6d1c39;
+  margin-bottom: 25px;
+  flex-shrink: 0;
+}
+
+/* Paragraph Text */
+.about-content p {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.75;
+  text-align: justify;
+  margin: 0;
+}
+
+/* --- Responsive Design (Mobile & Tablet) --- */
+@media (max-width: 900px) {
+  .about-page {
+    height: auto; /* Mobile par scroll allow */
+    overflow: visible;
+  }
+
+  .about-container {
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px auto;
+    gap: 30px;
+    overflow: visible;
+    align-items: stretch;
+  }
+
+  .about-images {
+    width: 100%;
+    max-height: 300px; /* Mobile par image choti */
+    height: 300px;
+  }
+
+  .about-content {
+    width: 100%;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .about-title {
+    font-size: 1.6rem;
+  }
+
+  .about-content p {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+}

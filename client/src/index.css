@@ -1,0 +1,47 @@
+:root {
+  --maroon-darkest: #3f0f22;
+  --maroon-dark: #591a30;
+  --maroon: #6d1c39;
+  --maroon-light: #7f2843;
+  --gold: #e2a934;
+  --gold-soft: #f0c565;
+  --white: #ffffff;
+  --ink: #241019;
+  --grey-text: #5a5a5a;
+  --font: "Poppins", "Segoe UI", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
