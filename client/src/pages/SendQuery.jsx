@@ -5,7 +5,7 @@ import "./SendQuery.css";
 
 const WEB3FORMS_ACCESS_KEY = "1f793fe3-ad83-47aa-8000-95e5a132de30";
 const BACKEND_URL = `${process.env.REACT_APP_API_URL}/api/queries`;
-const EMAIL_API_KEY = "901d46b59bcc4e1eb0094cc91eb9eb84"; // Step 1 se
+const EMAIL_API_KEY = "901d46b59bcc4e1eb0094cc91eb9eb84";
 
 export default function SendQuery() {
   const [form, setForm] = useState({
@@ -19,7 +19,7 @@ export default function SendQuery() {
   const [captchaCode, setCaptchaCode] = useState("");
   const [status, setStatus] = useState(null);
   const [submitting, setSubmitting] = useState(false);
-  const [errors, setErrors] = useState({}); // Field-wise errors
+  const [errors, setErrors] = useState({});
 
   // Generate random captcha
   const generateCaptcha = () => {
@@ -34,15 +34,15 @@ export default function SendQuery() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Phone field ke liye sirf digits allow karein
+    // Phone: sirf digits, max 10
     if (name === "phone") {
-      const onlyDigits = value.replace(/\D/g, "").slice(0, 10); // Sirf numbers, max 10
+      const onlyDigits = value.replace(/\D/g, "").slice(0, 10);
       setForm({ ...form, phone: onlyDigits });
       setErrors({ ...errors, phone: "" });
       return;
     }
 
-    // Captcha field ke liye bhi sirf digits (optional)
+    // Captcha: sirf digits, max 6
     if (name === "captcha") {
       const onlyDigits = value.replace(/\D/g, "").slice(0, 6);
       setForm({ ...form, captcha: onlyDigits });
@@ -50,7 +50,7 @@ export default function SendQuery() {
       return;
     }
 
-    // Baaki fields normal
+    // Baaki fields
     setForm({ ...form, [name]: value });
     setErrors({ ...errors, [name]: "" });
   };
@@ -63,16 +63,14 @@ export default function SendQuery() {
   };
 
   // ============================================
-  // Email Format + MX Record Validation
+  // Email Validation (Format + MX Record)
   // ============================================
   const validateEmail = async (email) => {
-    // 1. Format check (Regex)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return { valid: false, message: "Please enter a valid email address." };
     }
 
-    // 2. MX Record check via API
     try {
       const res = await fetch(
         `https://emailvalidation.abstractapi.com/v1/?api_key=${EMAIL_API_KEY}&email=${email}`
@@ -90,28 +88,22 @@ export default function SendQuery() {
       }
       return { valid: true };
     } catch (err) {
-      // Agar API fail ho jaye toh format check ko hi pass karne dein
       console.warn("Email API error:", err.message);
       return { valid: true };
     }
   };
 
   // ============================================
-  // Phone Number Validation (Indian Mobile)
+  // Phone Validation (Indian Mobile)
   // ============================================
   const validatePhone = (phone) => {
-    // Sirf digits nikalein
     const digits = phone.replace(/\D/g, "");
-
     if (digits.length !== 10) {
       return { valid: false, message: "Phone number must be exactly 10 digits." };
     }
-
-    // Indian mobile number 6, 7, 8, ya 9 se start hota hai
     if (!/^[6-9]\d{9}$/.test(digits)) {
       return { valid: false, message: "Please enter a valid Indian mobile number." };
     }
-
     return { valid: true };
   };
 
@@ -137,36 +129,35 @@ export default function SendQuery() {
 
     const newErrors = {};
 
-    // 1. Name check
+    // 1. Name
     if (!form.name.trim() || form.name.trim().length < 2) {
       newErrors.name = "Please enter your full name (min 2 characters).";
     }
 
-    // 2. Email check
+    // 2. Email
     const emailCheck = await validateEmail(form.email);
     if (!emailCheck.valid) {
       newErrors.email = emailCheck.message;
     }
 
-    // 3. Phone check
+    // 3. Phone
     const phoneCheck = validatePhone(form.phone);
     if (!phoneCheck.valid) {
       newErrors.phone = phoneCheck.message;
     }
 
-    // 4. Comments check
+    // 4. Comments
     if (!form.comments.trim() || form.comments.trim().length < 5) {
       newErrors.comments = "Please write your query (min 5 characters).";
     }
 
-    // 5. Captcha check
+    // 5. Captcha
     const captchaCheck = validateCaptcha(form.captcha);
     if (!captchaCheck.valid) {
       newErrors.captcha = captchaCheck.message;
-      generateCaptcha(); // Naya captcha generate karein
+      generateCaptcha();
     }
 
-    // Agar koi error hai toh form submit mat karein
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       setStatus({
@@ -177,13 +168,24 @@ export default function SendQuery() {
     }
 
     // ============================================
-    // Sab validation pass — ab email bhejein
+    // Validation Pass — Submit
     // ============================================
     setSubmitting(true);
     setErrors({});
 
+    // ⏱️ Safety timer: 15 sec baad button auto-reset
+    const safetyTimer = setTimeout(() => {
+      setSubmitting(false);
+      setStatus({
+        ok: false,
+        message: "Request timeout. Please try again.",
+      });
+    }, 15000);
+
     try {
-      // 1. Send Email via Web3Forms
+      // ============================================
+      // 1. Send Email via Web3Forms (Fast)
+      // ============================================
       const emailResponse = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -207,33 +209,46 @@ export default function SendQuery() {
         throw new Error(emailData.message || "Email sending failed.");
       }
 
-      // 2. Save to MongoDB
-      try {
-        await fetch(BACKEND_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            phone: form.phone,
-            comments: form.comments,
-          }),
-        });
-      } catch (dbErr) {
-        console.warn("MongoDB save error:", dbErr.message);
-      }
-
+      // ✅ Email chali gayi — ab turant user ko success dikhao
+      clearTimeout(safetyTimer);
       setStatus({
         ok: true,
         message: "✅ Thanks! Your query has been sent. We will contact you soon.",
       });
-      handleReset();
+      setSubmitting(false);
+
+      // ============================================
+      // 2. Save to MongoDB in Background (User ko wait nahi karana)
+      // ============================================
+      fetch(BACKEND_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          comments: form.comments,
+        }),
+      })
+        .then((res) => {
+          if (res.ok) console.log("✅ MongoDB saved");
+          else console.warn("⚠️ MongoDB save failed");
+        })
+        .catch((err) => {
+          console.warn("⚠️ MongoDB background save error:", err.message);
+        });
+
+      // Form reset karein
+      setTimeout(() => {
+        handleReset();
+      }, 2000);
+
     } catch (err) {
+      clearTimeout(safetyTimer);
       setStatus({
         ok: false,
         message: "❌ " + (err.message || "Something went wrong. Please try again."),
       });
-    } finally {
       setSubmitting(false);
     }
   };
